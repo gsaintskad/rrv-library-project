@@ -1,9 +1,14 @@
 import "./BookForm.css";
 import { useState } from "react";
 import { BookFormState } from "../../interfaces.ts";
+import { useDispatch } from "react-redux";
+import { addBook } from "../../../redux/books/actionCreators.ts";
 const BookForm = () => {
-  const [formData, setFormData] = useState({author:'', title:''} as BookFormState);
-
+  const [formData, setFormData] = useState({
+    author: "",
+    title: "",
+  } as BookFormState);
+  const dispatch = useDispatch();
   return (
     <div className="app-block book-form">
       <h2>BookForm</h2>
@@ -12,7 +17,8 @@ const BookForm = () => {
           e.preventDefault();
           if (formData.title && formData.author) {
             console.log(formData);
-            setFormData({ author: '', title: '' });
+            dispatch(addBook(formData));
+            setFormData({ author: "", title: "" });
           }
         }}
       >
