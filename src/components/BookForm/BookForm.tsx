@@ -1,8 +1,15 @@
 import "./BookForm.css";
 import { useState } from "react";
+
 import { BookFormState } from "../../interfaces.ts";
 import { useDispatch } from "react-redux";
 import { addBook } from "../../../redux/books/actionCreators.ts";
+
+let lastID=0;
+const setID=()=>{
+    return ++lastID;
+}
+
 const BookForm = () => {
   const [formData, setFormData] = useState({
     author: "",
@@ -17,7 +24,7 @@ const BookForm = () => {
           e.preventDefault();
           if (formData.title && formData.author) {
             console.log(formData);
-            dispatch(addBook(formData));
+            dispatch(addBook({id:setID(),...formData }));
             setFormData({ author: "", title: "" });
           }
         }}

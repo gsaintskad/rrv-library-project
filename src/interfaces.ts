@@ -3,6 +3,7 @@ export interface BookFormState {
   author?: string;
 }
 export interface IBook {
+  id:number;
   title?: string;
   author?: string;
 }
