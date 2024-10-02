@@ -13,3 +13,9 @@ export const removeBook = (book: IBook): a.BookAction => {
     payload: book,
   };
 };
+export const toggleFavorite = (book: IBook): a.BookAction => {
+  return {
+    type: a.TOGGLE_FAVORITE,
+    payload: book,
+  };
+};
